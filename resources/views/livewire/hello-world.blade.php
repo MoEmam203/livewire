@@ -48,7 +48,8 @@
 
     <hr>
 
-    <button wire:click="$refresh">Refresh</button>
+    {{-- <button wire:click="refreshChildren">Refresh</button> --}}
+    <button wire:click="$emit('refreshChildren')">Refresh</button>
 
     {{ now() }}
 </div>
