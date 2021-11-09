@@ -33,4 +33,7 @@
     <form wire:submit.prevent = "$set('name','Sara')">
         <button>Reset Name</button>
     </form>
+
+    {{-- lifecycle hooks --}}
+    {{-- Hydrated: Hello {{ $hydratedName }} --}}
 </div>
