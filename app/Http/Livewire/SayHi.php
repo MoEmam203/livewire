@@ -16,13 +16,18 @@ class SayHi extends Component
 
     // Refresh Child from Parent 
     // protected $listeners = ['refreshChildren' => 'refreshMe'];
-    protected $listeners = ['refreshChildren' => '$refresh'];
+    // protected $listeners = ['refreshChildren' => '$refresh'];
 
     // public function refreshMe(){
 
     // } 
 
-    
+    // refresh parent from child
+    protected $listeners = ['foo' => '$refresh'];
+
+    public function emitFoo(){
+        $this->emitUp('foo');
+    }
 
     public function render()
     {

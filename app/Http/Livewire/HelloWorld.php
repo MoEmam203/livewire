@@ -63,6 +63,9 @@ class HelloWorld extends Component
     // }
 
 
+    // refresh parent from child
+    protected $listeners = ['foo' => '$refresh'];
+
     public function render()
     {
         return view('livewire.hello-world');
