@@ -2,14 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Contact;
 use Livewire\Component;
 
 class HelloWorld extends Component
 {
-    public $name = "Mustafa";
-    public $loud = false;
-    // public $greeting = "Hello";
-    public $greeting = ["Hello"];
+    // public $name = "Mustafa";
+    // public $loud = false;
+    // // public $greeting = "Hello";
+    // public $greeting = ["Hello"];
 
     // Without parameters
     // public function resetName(){
@@ -23,10 +24,10 @@ class HelloWorld extends Component
     // LifeCycle Hooks
     
     // constructor livewire method
-    public function mount($name){
-        // $this->name = "Test";
-        $this->name = $name;
-    }
+    // public function mount($name){
+    //     // $this->name = "Test";
+    //     $this->name = $name;
+    // }
 
     // when anything changed
     // public $hydratedName;
@@ -40,8 +41,20 @@ class HelloWorld extends Component
     // }
 
     // change name when name updated
-    public function updatedName(){
-        $this->name = "Name Updated";
+    // public function updatedName(){
+    //     $this->name = "Name Updated";
+    // }
+
+    public $contacts;
+
+    public function mount(){
+        $this->contacts = Contact::all();
+    }
+
+    public function removeContact($id)
+    {
+        Contact::whereId($id)->first()->delete();
+        $this->contacts = Contact::all();
     }
 
     public function render()

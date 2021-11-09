@@ -1,18 +1,18 @@
 <div>
-    <input wire:model="name" type="text">
+    {{-- <input wire:model="name" type="text">
 
-    <input type="checkbox" wire:model="loud">
+    <input type="checkbox" wire:model="loud"> --}}
 
     {{-- <select wire:model="greeting"> --}}
-    <select wire:model="greeting" multiple>
+    {{-- <select wire:model="greeting" multiple>
         <option>Hello</option>
         <option>Goodbye</option>
         <option>Adios</option>
-    </select>
+    </select> --}}
 
     {{-- {{ $greeting }} --}}
-    {{ implode(', ',$greeting) }}
-    {{ $name }} @if($loud) ! @endif
+    {{-- {{ implode(', ',$greeting) }}
+    {{ $name }} @if($loud) ! @endif --}}
 
     {{-- Actions --}}
 
@@ -30,10 +30,25 @@
     </form> --}}
 
     {{-- 4- shorthand if method is one line --}}
-    <form wire:submit.prevent = "$set('name','Sara')">
+    {{-- <form wire:submit.prevent = "$set('name','Sara')">
         <button>Reset Name</button>
-    </form>
+    </form> --}}
 
     {{-- lifecycle hooks --}}
     {{-- Hydrated: Hello {{ $hydratedName }} --}}
+
+
+    {{-- Nested --}}
+    @foreach ($contacts as $contact )
+        <div class="">
+            @livewire("say-hi",['contact'=>$contact],key($contact->name))
+            <button wire:click="removeContact({{ $contact->id }})" >remove</button>
+        </div>
+    @endforeach
+
+    <hr>
+
+    <button wire:click="$refresh">Refresh</button>
+
+    {{ now() }}
 </div>
